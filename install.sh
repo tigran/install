@@ -333,18 +333,7 @@ check_run_command_as_root() {
 }
 
 should_install_command_line_tools() {
-  if [[ -n "${HOMEBREW_ON_LINUX-}" ]]
-  then
-    return 1
-  fi
-
-  if version_gt "${macos_version}" "10.13"
-  then
-    ! [[ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]]
-  else
-    ! [[ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]] ||
-      ! [[ -e "/usr/include/iconv.h" ]]
-  fi
+  return 1
 }
 
 get_permission() {
